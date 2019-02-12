@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css?family=Crimson+Text');
+
+.container-fluid {
+  /* padding: 1rem 4rem; */
+  width: 80%;
+  margin: 0 auto;
+}
+body {
+  font-family: 'Crimson Text', serif;
+}
+
+nav {
+  margin-bottom: 2rem;
+}
+#roomList {
+  padding-top: 1rem;
+  text-align: center;
+}
+
+#roomList select {
+  width: 100%;
+  height: 2rem;
+}
+
+h5 {
+  text-align: center;
+  padding: .5rem;
+  border-bottom: 1px solid gray;
+}
+
+h4::before {
+  font-family: "Font Awesome 5 Free";
+font-size: 1rem;
+padding-right: .7rem;
+  font-weight: 700;
+   content: "\f304";
+}
+.dropArea {
+width: 100%;
+height: 600px;
+border: 2px solid gray;
+}
+
+.gridBtns {
+  padding-top: 1rem;
+}
+
+.gridBtns button {
+  display: inline-block;
+  align: right;
+  margin-right: .6rem;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  padding: .1rem .6rem;
+  background-color: #46a8d6;
+
+}
+
+.furnitureList {
+  /* border: 1px solid gray; */
+  margin: 0 auto;
+  padding: .5px;
+  text-align: center;
+
+}
+
+.placeholder-icon {
+  width: 80px;
+  height: 80px;
+  padding: .5rem;
+  background-color: #46a8d6;
+  display: inline-block;
+  margin: 0 auto;
+}
