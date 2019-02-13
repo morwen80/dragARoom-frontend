@@ -8,64 +8,64 @@
 	<link rel="stylesheet" href="index.css">
 	<script defer src="src/index.js"></script>
 	<script src="plain-draggable/plain-draggable.min.js"></script>
-
 </head>
 <body>
 
-  <nav class="navbar navbar-light bg-light">
-    <span class="navbar-brand mb-0 h1">Drag-a-room</span>
-  </nav>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	  <a class="navbar-brand" href="#">Drag-a-Room</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
 
-<div class="container-fluid">
-  <div class="row">
-   <div class="col-2">
-     <h5>Your Room List</h5>
-     <form action="#" name="room-list" id="roomList">
-     <select name="rooms" onchange="this.form.submit()">>
-       <option value="room1">Room 1</option>
-       <option value="room2">Room 2</option>
-       <option value="room3">Room 3</option>
-     </select>
-     <!-- <input type="submit" value="Submit"> -->
-   </form>
-   </div>
-   <div class="col-7">
-     <h4 contenteditable>My Room</h4>
-       <div class="dropArea">
-		       <div id="block1" class="placeholder-icon2">table</div>
-		       <div id="block2" class="placeholder-icon3">desk</div>
-     </div>
-     <div class="gridBtns">
-       <button id="resetGrid">Reset</button>
-       <!-- <button id="undoGrid">Undo</button> -->
-       <button id="submitGrid">Save your Room</button>
-     </div>
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	    <ul class="navbar-nav mr-auto">
+
+	      <li class="nav-item dropdown">
+	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	          Your Rooms
+	        </a>
+	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	          <a class="dropdown-item" href="#">Room 1</a>
+	          <a class="dropdown-item" href="#">Room 2</a>
+	          <a class="dropdown-item" href="#">Room 3</a>
+	        </div>
+	      </li>
+
+	    </ul>
+	  </div>
+	</nav>
+
+<div class="box">
+
+<div class="dropzone">
+  <h4 contenteditable>My Room</h4>
+    <div id="dropArea"></div>
+      <div class="gridBtns">
+        <button id="resetGrid">Reset</button>
+        <button id="submitGrid">Save your Room</button>
+      </div>
+</div>
+
+	<div id="furnitureList">
+    <h5>Furniture List</h5>
+      <div class="furniture" draggable="true">
+        <img src="images/chair.gif">
+      </div>
+      <div class="furniture"><img src="images/coach.gif"></div>
+      <div class="furniture big"><img src="images/rug.gif"></div>
+      <div class="furniture"><img src="images/single-bed.gif"></div>
+      <div class="furniture big"><img src="images/double-bed.gif"></div>
+      <div class="furniture"><img src="images/nightstand.gif"></div>
+      <div class="furniture big"><img src="images/table.gif"></div>
+      <div class="furniture"><img src="images/window.gif"></div>
+      <div class="furniture"><img src="images/door.gif"></div>
   </div>
-   <div class="col-3">
-		 <div class="furnitureList">
-		 <div class="placeholder-icon"></div>
-		 <div class="placeholder-icon"></div>
-		 <div class="placeholder-icon"></div>
-		 <div class="placeholder-icon"></div>
-		 <div class="placeholder-icon"></div>
-		 <div class="placeholder-icon"></div>
-		 <div class="placeholder-icon"></div>
-		 <div class="placeholder-icon"></div>
-		 <div class="placeholder-icon"></div>
-		 </div>
-   </div>
- </div>
-
-
-
-
-
 
 </div><!-- container-->
+
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
 
 </body>
 </html>
