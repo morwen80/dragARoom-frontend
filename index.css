@@ -95,10 +95,10 @@ border: 2px solid gray;
 }
 
 .placeholder-icon4 {
-  width: 595px;
+  width: 1px;
   height: 595px;
   padding: .5rem;
-  background-color: white;
+  background-color: red;
   display: inline-block;
   margin: 0 auto;
   color: white;
