@@ -2,7 +2,7 @@
 
 .container-fluid {
   /* padding: 1rem 4rem; */
-  width: 100%;
+  width: 80%;
   margin: 0 auto;
 }
 body {
@@ -36,7 +36,7 @@ padding-right: .7rem;
    content: "\f304";
 }
 .dropArea {
-width: 600px;
+width: 100%;
 height: 600px;
 border: 2px solid gray;
 }
@@ -73,33 +73,92 @@ border: 2px solid gray;
   margin: 0 auto;
 }
 
-.placeholder-icon2 {
+#block1 {
   width: 100px;
   height: 100px;
-  border-radius: 50%;
   padding: .5rem;
-  background-color: gray;
+  background-color: white;
   display: inline-block;
   margin: 0 auto;
-  color: white;
+  content:url(images/chair.gif);
 }
 
-.placeholder-icon3 {
-  width: 180px;
+#block2 {
+  width: 110px;
   height: 80px;
   padding: .5rem;
-  background-color: black;
+  background-color: white;
   display: inline-block;
   margin: 0 auto;
-  color: white;
+  content:url(images/coach.gif);
 }
 
-.placeholder-icon4 {
-  width: 1px;
-  height: 595px;
+#block3 {
+  width: 80px;
+  height: 80px;
   padding: .5rem;
-  background-color: red;
+  background-color: white;
   display: inline-block;
   margin: 0 auto;
-  color: white;
+  content:url(images/door.gif);
+}
+
+#block4 {
+  width: 120px;
+  height: 200px;
+  padding: .5rem;
+  background-color: white;
+  display: inline-block;
+  margin: 0 auto;
+  content:url(images/double-bed.gif);
+}
+
+#block5 {
+  width: 80px;
+  height: 80px;
+  padding: .5rem;
+  background-color: white;
+  display: inline-block;
+  margin: 0 auto;
+  content:url(images/nightstand.gif);
+}
+
+#block6 {
+  width: 100px;
+  height: 200px;
+  padding: .5rem;
+  background-color: white;
+  display: inline-block;
+  margin: 0 auto;
+  content:url(images/rug.gif);
+}
+
+#block7 {
+  width: 120px;
+  height: 180px;
+  padding: .5rem;
+  background-color: white;
+  display: inline-block;
+  margin: 0 auto;
+  content:url(images/single-bed.gif);
+}
+
+#block8 {
+  width: 180px;
+  height: 180px;
+  padding: .5rem;
+  background-color: white;
+  display: inline-block;
+  margin: 0 auto;
+  content:url(images/table.gif);
+}
+
+#block9 {
+  width: 80px;
+  height: 80px;
+  padding: .5rem;
+  background-color: white;
+  display: inline-block;
+  margin: 0 auto;
+  content:url(images/window.gif);
 }
