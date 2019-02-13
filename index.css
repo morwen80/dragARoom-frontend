@@ -64,14 +64,15 @@ border: 2px solid gray;
 
 }
 
-.placeholder-icon {
+.furniture {
   width: 80px;
   height: 80px;
-  padding: .5rem;
+  padding: 2rem;
   background-color: #46a8d6;
   display: inline-block;
   margin: 0 auto;
 }
+
 
 .placeholder-icon2 {
   width: 100px;

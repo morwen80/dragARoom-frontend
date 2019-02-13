@@ -1,3 +1,5 @@
+
+
 const drag1 = () => {
 return new PlainDraggable(document.getElementById('block1'))
 }
@@ -15,21 +17,4 @@ const saveDivs = () => {
 }
 
 
-const dropArea = document.querySelector('.dropArea');
-const fL = document.querySelector(".col-3");
 
-function furnitureListListener(){
-    fL.addEventListener('click', e =>{
-        if(e.target && e.target.matches(".placeholder-icon")){
-            console.log(e.target)
-            addToRoom(e.target)
-
-        }});
-}
-
-function addToRoom(furniture){
-  let furEl = new PlainDraggable(furniture)
-    dropArea.appendChild(furniture);
-  return furEl
-}
-furnitureListListener();
