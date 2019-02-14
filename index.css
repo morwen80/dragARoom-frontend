@@ -60,7 +60,7 @@ h4::before {
 width: 900px;
 height: 900px;
 border: 1rem solid gray;
-background-image: url("images/parquet.jpg");
+/* background-image: url("images/parquet.jpg"); */
 }
 
 .gridBtns {
@@ -94,6 +94,16 @@ background-image: url("images/parquet.jpg");
   margin: 0 auto;
   padding-bottom: 1rem;
 }
+.placeholder-icon2 {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  padding: .5rem;
+  background-color: gray;
+  display: inline-block;
+  margin: 0 auto;
+  color: white;
+}
 
 .furniture img {
   width: 90px;
@@ -107,7 +117,8 @@ background-image: url("images/parquet.jpg");
 
   animation: shake 0.5s;
   animation-iteration-count: infinite;
-}
+
+
 
 @keyframes shake {
   0% { transform: translate(1px, 1px) rotate(0deg); }
