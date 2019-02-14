@@ -20,7 +20,7 @@ class Furniture {
         let imgEl = document.createElement("img")
         imgEl.setAttribute("src", `${this.img}`);
         this.el.appendChild(imgEl);
-        
+
     }
 
     addToFurnitureList () {
@@ -31,7 +31,7 @@ class Furniture {
     addEventListener() {
         this.el.addEventListener("click", this.addToRoom);
     }
-    
+
     addToRoom(){
         const dropArea = document.querySelector('#dropArea');
         dropArea.appendChild(this.el)
