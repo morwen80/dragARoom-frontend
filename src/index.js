@@ -16,5 +16,11 @@ const saveDivs = () => {
 
 }
 
+for(let i =0; i < 12; i++){
+  new Furniture("tables");
+}
+
+
+
 
 

@@ -68,6 +68,7 @@ border: 2px solid gray;
   width: 80px;
   height: 80px;
   padding: 2rem;
+  border-radius: 50%;
   background-color: #46a8d6;
   display: inline-block;
   margin: 0 auto;
