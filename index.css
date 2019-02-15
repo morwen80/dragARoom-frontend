@@ -51,6 +51,21 @@ h4::before {
   content: "\f304";
 }
 
+#selectAFloorTitle {
+  display: none;
+}
+
+#floorSelection {
+  padding-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.floorType img {
+  width: 70px;
+  height: 70px;
+  margin-bottom: .5rem;
+}
+
 .dropzone {
   margin: 0 auto;
   padding-top: 1rem;
