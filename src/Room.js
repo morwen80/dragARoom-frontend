@@ -1,31 +1,55 @@
 class Room{
 
-     static getDefaultOptions() {
-        return {snap: {step: 10}};
-    }
+  constructor (id, name, img_background) {
+    this.id = id
+    this.name = name
+    this.img_background = img_background
+    this.renderRoom();
+    this.addToRoomList();
+  }
 
-    static addDragToElement(){
-        const dropArea = document.querySelector('#dropArea');
-        console.log(dropArea.lastElementChild.dataset.id)
-        return new PlainDraggable(dropArea.lastElementChild, this.getDefaultOptions());
-    }
+  renderRoom(){
+    this.roomEl = document.createElement('div')
+    this.roomEl.dataset.id = this.id;
+    this.roomEl.name = this.name;
+    this.roomEl.className = 'dropdown-item'; 
+    this.roomEl.innerText = this.name;
+  }
 
-    static saveRoom(roomArea){
-      let room_name = document.querySelector('h4').innerText
-      let room = roomArea
-      let roomArray = []
+  addToRoomList() {
+    const rL = document.getElementById('roomDropDown');
+    rL.appendChild(this.roomEl)
+}
 
-      for(const furniture of room){
-        let furnObj={
-              //room_id: 4,
-              furniture_id: furniture.dataset.id,
-              furniture_x: parseInt(furniture.getBoundingClientRect().x),
-              furniture_y: parseInt(furniture.getBoundingClientRect().y)
-            }
-          roomArray.push(furnObj);
-        }
-        return roomArray
+  //<a class="dropdown-item" href="#">Room 1</a>
+  static getDefaultOptions() {
+    return {snap: {step: 10}};
+  }
+
+  static addDragToElement(){
+    const dropArea = document.querySelector('#dropArea');
+    console.log(dropArea.lastElementChild.dataset.id)
+    return new PlainDraggable(dropArea.lastElementChild, this.getDefaultOptions());
+  }
+
+  static saveRoom(roomArea){
+    let roomName = document.querySelector('h4').innerText
+    let room = roomArea
+    let roomArray = []
+    let room_id = rooms.length++
+
+    for(const furniture of room){
+      let furnObj={
+      room_id: room_id,
+      furniture_id: furniture.dataset.id,
+      furniture_x: parseInt(furniture.getBoundingClientRect().x),
+      furniture_y: parseInt(furniture.getBoundingClientRect().y)
       }
+      roomArray.push(furnObj);
+    }
+    roomArray.push(roomName);
+    return roomArray
+  }
 }
 
 

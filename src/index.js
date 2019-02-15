@@ -1,7 +1,18 @@
 
+
+let rooms;
+
+
+
 function renderAllFurniture(furniture){
   for(const furn of furniture){
     new Furniture(furn.id, furn.name, furn.size, furn.image)
+  }
+}
+
+function renderAllRooms(room){
+  for(const roo of room){
+    new Room(roo.id, roo.name, roo.img_background)
   }
 }
 
@@ -12,18 +23,20 @@ function collectRoomButton(){
     e.preventDefault();
     //console.log(document.querySelectorAll('#dropArea div'));
     let newRoom = Room.saveRoom(document.querySelectorAll('#dropArea div'));
-    room_name = newRoom.slice(-1).pop()
-    //postRoom(room_name);
-    postEachFurniture(newRoom)
-    //console.log(newRoom, room_name);
-  })
-}
+    let roomInfo = newRoom.filter(stuff => typeof stuff === 'string')
+    let furnitureInfo = newRoom.filter(stuff => typeof stuff === 'object')
+    
+    postRoom(roomInfo)
+    .then(resp => postEachFurniture(furnitureInfo))
+
+
+    })
+  }
+
 
 function postEachFurniture(newRoom){
   for(const furn of newRoom){
-      if(typeof furn === 'object'){
-          postRoomFurniture(furn);
-      }
+      postRoomFurniture(furn);  
   }
 }
 
@@ -38,6 +51,11 @@ function postEachFurniture(newRoom){
 function initialize(){
   getFurnitures().then(furniture => {
     renderAllFurniture(furniture)
+  })
+
+  getRooms().then(room => {
+    rooms = room
+    renderAllRooms(rooms)
   })
 
   collectRoomButton()
@@ -58,6 +76,19 @@ function postRoomFurniture(furniture){
   })
 }
 
+function getRooms(){
+  return fetch('http://localhost:3000/api/v1/rooms').then(resp => resp.json());
+}
+
+function postRoom(room){
+  roomObj = {name: room[0]}
+  //debugger
+  return fetch('http://localhost:3000/api/v1/rooms',{
+    method:'Post',
+    headers:{'Content-Type': 'application/json'},
+    body: JSON.stringify(roomObj)
+  })
+}
 
 
 
