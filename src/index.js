@@ -1,79 +1,66 @@
-const drag1 = () => {
-return new PlainDraggable(document.getElementById('block1'))
-}
-// drag1().snap = {x: {step: 10}, y: {step: 20}};
 
-const drag2 = () => {
-return new PlainDraggable(document.getElementById('block2'))
+function renderAllFurniture(furniture){
+  for(const furn of furniture){
+    new Furniture(furn.id, furn.name, furn.size, furn.image)
+  }
 }
 
-const drag3 = () => {
-return new PlainDraggable(document.getElementById('block3'))
+const submitRoom = document.getElementById('submitGrid');
+
+function collectRoomButton(){
+  submitRoom.addEventListener("click", e =>{
+    e.preventDefault();
+    //console.log(document.querySelectorAll('#dropArea div'));
+    let newRoom = Room.saveRoom(document.querySelectorAll('#dropArea div'));
+    room_name = newRoom.slice(-1).pop()
+    //postRoom(room_name);
+    postEachFurniture(newRoom)
+    //console.log(newRoom, room_name);
+  })
 }
 
-const drag4 = () => {
-return new PlainDraggable(document.getElementById('block4'))
+function postEachFurniture(newRoom){
+  for(const furn of newRoom){
+      if(typeof furn === 'object'){
+          postRoomFurniture(furn);
+      }
+  }
 }
 
-const drag5 = () => {
-return new PlainDraggable(document.getElementById('block5'))
+
+
+
+
+
+
+
+
+function initialize(){
+  getFurnitures().then(furniture => {
+    renderAllFurniture(furniture)
+  })
+
+  collectRoomButton()
 }
 
-const drag6 = () => {
-return new PlainDraggable(document.getElementById('block6'))
+
+
+function getFurnitures(){
+  return fetch('http://localhost:3000/api/v1/furnitures').then(resp => resp.json());
 }
 
-const drag7 = () => {
-return new PlainDraggable(document.getElementById('block7'))
+function postRoomFurniture(furniture){
+  //debugger
+  return fetch('http://localhost:3000/api/v1/room_furnitures',{
+    method:'Post',
+    headers:{'Content-Type': 'application/json'},
+    body: JSON.stringify(furniture)
+  })
 }
 
-const drag8 = () => {
-return new PlainDraggable(document.getElementById('block8'))
-}
 
-const drag9 = () => {
-return new PlainDraggable(document.getElementById('block9'))
-}
 
-const drag10 = () => {
-return new PlainDraggable(document.getElementById('block10'))
-}
 
-const drag11 = () => {
-return new PlainDraggable(document.getElementById('block11'))
-}
 
-const drag12 = () => {
-return new PlainDraggable(document.getElementById('block12'))
-}
 
-const dropArea = document.querySelector('.dropArea');
-// dropArea.containment = {left: 20, top: 20, width: 600, height: 600};
-const fL = document.querySelector(".col-3");
-
-function furnitureListListener(){
-    fL.addEventListener('click', e =>{
-        if(e.target && e.target.matches(".placeholder-icon")){
-            console.log(e.target)
-            addToRoom(e.target)
-            drag1()
-            drag2()
-            drag3()
-            drag4()
-            drag5()
-            drag6()
-            drag7()
-            drag8()
-            drag9()
-            drag10()
-            drag11()
-            drag12()
-        }});
-}
-
-function addToRoom(furniture){
-  let furEl = new PlainDraggable(furniture)
-    dropArea.appendChild(furniture);
-  return furEl
-}
-furnitureListListener();
+initialize()

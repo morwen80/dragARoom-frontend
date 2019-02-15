@@ -1,10 +1,10 @@
 class Furniture {
 
-    constructor (name, type, img) {
+    constructor (id, name, size, img) {
         this.name = name
-        this.type = type
+        this.size = size
         this.img = img
-        this.id = Furniture.id++
+        this.id = id
         Furniture.all.push(this)
         this.createFurnitureEl()
         this.bindMethods ()
@@ -33,6 +33,7 @@ class Furniture {
     }
 
     addToRoom(){
+      //debugger
         const dropArea = document.querySelector('#dropArea');
         dropArea.appendChild(this.el)
         Room.addDragToElement();
@@ -44,7 +45,5 @@ class Furniture {
 
 
 }
-
-Furniture.id = 1
 
 Furniture.all = []

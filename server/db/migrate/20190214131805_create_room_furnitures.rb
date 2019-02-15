@@ -8,10 +8,3 @@ class CreateRoomFurnitures < ActiveRecord::Migration[5.2]
     end
   end
 end
-
-# t.string :name
-# t.string :img_background
-  #
-  # t.string :name
-  # t.string :size
-  # t.string :image
