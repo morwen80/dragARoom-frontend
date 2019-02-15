@@ -33,9 +33,9 @@ class Furniture {
     }
 
     addToRoom(){
-      //debugger
         const dropArea = document.querySelector('#dropArea');
         dropArea.appendChild(this.el)
+        this.el.removeEventListener('click', this.addToRoom)
         Room.addDragToElement();
     }
 
