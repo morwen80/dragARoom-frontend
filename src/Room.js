@@ -34,6 +34,7 @@ class Room{
 
   static saveRoom(roomArea){
     let roomName = document.querySelector('h4').innerText
+    let roomImg = document.querySelector('#dropArea').style.backgroundImage
     let room = roomArea
     let roomArray = []
     let room_id = rooms.length++
@@ -47,6 +48,7 @@ class Room{
       }
       roomArray.push(furnObj);
     }
+    roomArray.push(roomImg);
     roomArray.push(roomName);
     return roomArray
   }

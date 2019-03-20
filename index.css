@@ -16,8 +16,6 @@ nav {
   justify-content: center;
   width: 90%;
   margin: 0 auto;
-  /* padding-left: 2rem;
-  padding-right: 2rem; */
 }
 
 #roomListGroup {
@@ -75,7 +73,6 @@ h4::before {
 width: 900px;
 height: 900px;
 border: 1rem solid gray;
-/* background-image: url("images/parquet.jpg"); */
 }
 
 .gridBtns {
@@ -103,8 +100,6 @@ border: 1rem solid gray;
 }
 
  .furniture {
-  /* background-color: #46a8d6; */
-  /* border: 2px solid red; */
   display: inline;
   margin: 0 auto;
   padding-bottom: 1rem;
@@ -129,9 +124,9 @@ border: 1rem solid gray;
 
 .big img:hover, .furniture img:hover {
 
-  animation: shake 0.5s;
+  animation: shake 1s;
   animation-iteration-count: infinite;
-
+}
 
 
 @keyframes shake {

@@ -2,6 +2,43 @@
 
 let rooms;
 
+const currentFloor = document.querySelector('#dropArea')
+const floors = document.querySelectorAll('.floorType')
+const roomDrop = document.getElementById("roomDropDown");
+const dropZone = document.querySelector('.dropzone')
+
+function roomSelectListener(){
+  roomDrop.addEventListener("click", e=> {
+    console.log(e.target.dataset.id)
+    room = e.target.dataset.id
+    //getRoomFurnitures()
+    getSpecificRoom(room).then(room => displayRoom(room));
+
+  });
+}
+
+function displayRoom(room){
+  dropZone.innerHTML = `<h4 contenteditable>${room.name}</h4>
+                        <div id="dropArea" style= "background-image: ${room.img_background};"></div>
+                          <div class="gridBtns">
+                        <button id="resetGrid">Reset</button>
+                        <button id="submitGrid">Save Changes</button>
+                        </div>`
+  debugger
+}
+
+
+
+
+
+floors.forEach(floor => {
+  floor.addEventListener("click", (e) => {
+    let changeFloor = e.target.src
+   currentFloor.style.backgroundImage = `url(${changeFloor})`;
+    })
+});
+
+
 
 
 function renderAllFurniture(furniture){
@@ -25,11 +62,8 @@ function collectRoomButton(){
     let newRoom = Room.saveRoom(document.querySelectorAll('#dropArea div'));
     let roomInfo = newRoom.filter(stuff => typeof stuff === 'string')
     let furnitureInfo = newRoom.filter(stuff => typeof stuff === 'object')
-    
     postRoom(roomInfo)
-    .then(resp => postEachFurniture(furnitureInfo))
-
-
+    .then(resp => postEachFurniture(furnitureInfo)).then(location.reload())
     })
   }
 
@@ -39,7 +73,6 @@ function postEachFurniture(newRoom){
       postRoomFurniture(furn);  
   }
 }
-
 
 
 
@@ -58,6 +91,7 @@ function initialize(){
     renderAllRooms(rooms)
   })
 
+  roomSelectListener()
   collectRoomButton()
 }
 
@@ -81,13 +115,17 @@ function getRooms(){
 }
 
 function postRoom(room){
-  roomObj = {name: room[0]}
+  roomObj = {name: room[1],img_background: room[0]}
   //debugger
   return fetch('http://localhost:3000/api/v1/rooms',{
     method:'Post',
     headers:{'Content-Type': 'application/json'},
     body: JSON.stringify(roomObj)
   })
+}
+
+function getSpecificRoom(roomID){
+ return fetch(`http://localhost:3000/api/v1/rooms/${roomID}`).then(resp => resp.json());
 }
 
 

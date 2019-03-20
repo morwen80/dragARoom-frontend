@@ -6,6 +6,8 @@ class Api::V1::RoomFurnituresController < ApplicationController
       render json: @room_furnitures
     end
 
+    
+
     def create
       @room_furniture = RoomFurniture.new(room_furnitures_params)
       @room_furniture.save!
