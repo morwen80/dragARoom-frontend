@@ -58,18 +58,16 @@ const submitRoom = document.getElementById('submitGrid');
 function collectRoomButton(){
   submitRoom.addEventListener("click", e =>{
     e.preventDefault();
-    //console.log(document.querySelectorAll('#dropArea div'));
+
     let newRoom = Room.saveRoom(document.querySelectorAll('#dropArea div'));
     let roomInfo = newRoom.filter(stuff => typeof stuff === 'string')
     let furnitureInfo = newRoom.filter(stuff => typeof stuff === 'object')
-    postRoom(roomInfo)
-    .then(resp => postEachFurniture(furnitureInfo, resp.id))
-    //.then(location.reload())
-    })
-  }
 
+    postRoom(roomInfo, furnitureInfo)
+  })
+}
 
-function postRoom(room){
+function postRoom(room, furniture){
   roomObj = {name: room[1],img_background: room[0]}
 
   return fetch('http://localhost:3000/api/v1/rooms',{
@@ -77,7 +75,12 @@ function postRoom(room){
     headers:{'Content-Type': 'application/json'},
     body: JSON.stringify(roomObj)
   })
-  .then(resp => resp.json())     
+  .then(resp => resp.json())
+  .then(room => {
+    rooms.concat(room)
+    new Room(room.id, room.name, room.img_background)
+    postEachFurniture(furniture, room.id)
+  })    
 }
 
 function postEachFurniture(newRoom, respID){
@@ -85,6 +88,8 @@ function postEachFurniture(newRoom, respID){
       furn.room_id = respID
       postRoomFurniture(furn);  
   }
+    currentFloor.innerHTML = '';
+    document.querySelector('h4').innerText = 'My Room';
 }
 
 function postRoomFurniture(furniture){
