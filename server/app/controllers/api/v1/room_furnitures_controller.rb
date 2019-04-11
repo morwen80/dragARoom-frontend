@@ -1,3 +1,5 @@
+require 'byebug'
+
 class Api::V1::RoomFurnituresController < ApplicationController
 
 
@@ -9,9 +11,9 @@ class Api::V1::RoomFurnituresController < ApplicationController
     
 
     def create
-      @room_furniture = RoomFurniture.new(room_furnitures_params)
-      @room_furniture.save!
-      render json: @room_furniture
+      room_furniture = RoomFurniture.new(room_furnitures_params)
+      room_furniture.save!
+      render json: room_furniture
     end
 
     private
