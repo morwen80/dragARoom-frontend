@@ -63,16 +63,39 @@ function collectRoomButton(){
     let roomInfo = newRoom.filter(stuff => typeof stuff === 'string')
     let furnitureInfo = newRoom.filter(stuff => typeof stuff === 'object')
     postRoom(roomInfo)
-    .then(resp => postEachFurniture(furnitureInfo)).then(location.reload())
+    .then(resp => postEachFurniture(furnitureInfo, resp.id))
+    //.then(location.reload())
     })
   }
 
 
-function postEachFurniture(newRoom){
+function postRoom(room){
+  roomObj = {name: room[1],img_background: room[0]}
+
+  return fetch('http://localhost:3000/api/v1/rooms',{
+    method:'Post',
+    headers:{'Content-Type': 'application/json'},
+    body: JSON.stringify(roomObj)
+  })
+  .then(resp => resp.json())     
+}
+
+function postEachFurniture(newRoom, respID){
   for(const furn of newRoom){
+      furn.room_id = respID
       postRoomFurniture(furn);  
   }
 }
+
+function postRoomFurniture(furniture){
+  return fetch('http://localhost:3000/api/v1/room_furnitures',{
+    method:'Post',
+    headers:{'Content-Type': 'application/json'},
+    body: JSON.stringify(furniture)
+  })
+}
+
+
 
 
 
@@ -97,36 +120,22 @@ function initialize(){
 
 
 
+
+
 function getFurnitures(){
   return fetch('http://localhost:3000/api/v1/furnitures').then(resp => resp.json());
-}
-
-function postRoomFurniture(furniture){
-  //debugger
-  return fetch('http://localhost:3000/api/v1/room_furnitures',{
-    method:'Post',
-    headers:{'Content-Type': 'application/json'},
-    body: JSON.stringify(furniture)
-  })
 }
 
 function getRooms(){
   return fetch('http://localhost:3000/api/v1/rooms').then(resp => resp.json());
 }
 
-function postRoom(room){
-  roomObj = {name: room[1],img_background: room[0]}
-  //debugger
-  return fetch('http://localhost:3000/api/v1/rooms',{
-    method:'Post',
-    headers:{'Content-Type': 'application/json'},
-    body: JSON.stringify(roomObj)
-  })
-}
-
 function getSpecificRoom(roomID){
- return fetch(`http://localhost:3000/api/v1/rooms/${roomID}`).then(resp => resp.json());
-}
+  return fetch(`http://localhost:3000/api/v1/rooms/${roomID}`).then(resp => resp.json());
+ }
+
+
+
 
 
 

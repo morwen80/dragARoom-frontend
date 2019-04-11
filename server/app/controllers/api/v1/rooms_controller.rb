@@ -1,3 +1,5 @@
+require 'byebug'
+
 class Api::V1::RoomsController < ApplicationController
 
   def index
@@ -12,9 +14,9 @@ class Api::V1::RoomsController < ApplicationController
 
 
   def create
-    @room = Room.new(room_params)
-    @room.save!
-    render json: @room
+    room = Room.new(room_params)
+    room.save!
+    render json: room
   end
 
   private

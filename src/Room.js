@@ -35,19 +35,17 @@ class Room{
   static saveRoom(roomArea){
     let roomName = document.querySelector('h4').innerText
     let roomImg = document.querySelector('#dropArea').style.backgroundImage
-    let room = roomArea
     let roomArray = []
-    let room_id = rooms.length++
 
-    for(const furniture of room){
+    for(const furniture of roomArea){
       let furnObj={
-      room_id: room_id,
       furniture_id: furniture.dataset.id,
       furniture_x: parseInt(furniture.getBoundingClientRect().x),
       furniture_y: parseInt(furniture.getBoundingClientRect().y)
       }
       roomArray.push(furnObj);
     }
+
     roomArray.push(roomImg);
     roomArray.push(roomName);
     return roomArray
