@@ -21,14 +21,12 @@ class Room{
     rL.appendChild(this.roomEl)
 }
 
-  //<a class="dropdown-item" href="#">Room 1</a>
   static getDefaultOptions() {
     return {snap: {step: 10}};
   }
 
   static addDragToElement(){
     const dropArea = document.querySelector('#dropArea');
-    console.log(dropArea.lastElementChild.dataset.id)
     return new PlainDraggable(dropArea.lastElementChild, this.getDefaultOptions());
   }
 

@@ -9,11 +9,13 @@ const dropZone = document.querySelector('.dropzone')
 
 function roomSelectListener(){
   roomDrop.addEventListener("click", e=> {
-    console.log(e.target.dataset.id)
-    room = e.target.dataset.id
-    //getRoomFurnitures()
-    getSpecificRoom(room).then(room => displayRoom(room));
-
+    currentFloor.innerHTML = '';
+    roomID = e.target.dataset.id
+    getSpecificRoom(roomID)
+    .then(room => {
+      displayRoom(room)
+      displayFurnitures(room.room_furnitures)
+    });
   });
 }
 
@@ -24,17 +26,23 @@ function displayRoom(room){
                         <button id="resetGrid">Reset</button>
                         <button id="submitGrid">Save Changes</button>
                         </div>`
-  debugger
 }
 
-
-
+function displayFurnitures(furnitureList){
+  for(const roomFurn of furnitureList){
+      getSpecificFurniture(roomFurn.furniture_id)
+      .then(resp => 
+        new RoomFurniture(roomFurn.furniture_id, resp.image, roomFurn.furniture_x, roomFurn.furniture_y)
+        )
+  }
+}
 
 
 floors.forEach(floor => {
   floor.addEventListener("click", (e) => {
     let changeFloor = e.target.src
-   currentFloor.style.backgroundImage = `url(${changeFloor})`;
+    debugger
+   currentFloor.style.backgroundImage = changeFloor;
     })
 });
 
@@ -130,6 +138,11 @@ function initialize(){
 function getFurnitures(){
   return fetch('http://localhost:3000/api/v1/furnitures').then(resp => resp.json());
 }
+
+function getSpecificFurniture(furnitureID){
+  return fetch(`http://localhost:3000/api/v1/furnitures/${furnitureID}`).then(resp => resp.json());
+}
+
 
 function getRooms(){
   return fetch('http://localhost:3000/api/v1/rooms').then(resp => resp.json());
