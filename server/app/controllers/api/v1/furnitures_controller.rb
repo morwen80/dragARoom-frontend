@@ -11,6 +11,11 @@ class Api::V1::FurnituresController < ApplicationController
     render json: @furniture
   end
 
+  def show
+    @furniture = Furniture.find(params[:id])
+    render json: @furniture
+  end
+
   private
 
   def furniture_params
