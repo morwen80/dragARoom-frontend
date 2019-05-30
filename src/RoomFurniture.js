@@ -3,8 +3,8 @@ class RoomFurniture{
     constructor (id, img, x, y) {
         this.img = img
         this.id = id
-        this.PosX = x
-        this.PosY = y
+        this.left = x
+        this.top = y
         this.createRoomFurnitureEl()
         this.RenderRoomFurniture()
     }
@@ -22,9 +22,8 @@ class RoomFurniture{
     RenderRoomFurniture(){
         const dropArea = document.querySelector('#dropArea');
         dropArea.appendChild(this.el)
-        dropArea.firstElementChild.getBoundingClientRect().x = this.PosX
-        dropArea.firstElementChild.getBoundingClientRect().y = this.PosY
-        debugger
+        
         Room.addDragToElement();
+        Room.addFurnitureCoords(this.left, this.top);
     }
 }

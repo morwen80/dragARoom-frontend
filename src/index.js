@@ -40,13 +40,12 @@ function displayFurnitures(furnitureList){
 
 floors.forEach(floor => {
   floor.addEventListener("click", (e) => {
-    let changeFloor = e.target.src
     debugger
-   currentFloor.style.backgroundImage = changeFloor;
+    let changeFloor = e.target.src
+    currentFloor.style.backgroundImage = changeFloor;
+    debugger
     })
 });
-
-
 
 
 function renderAllFurniture(furniture){

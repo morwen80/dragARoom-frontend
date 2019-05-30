@@ -22,12 +22,19 @@ class Room{
 }
 
   static getDefaultOptions() {
-    return {snap: {step: 10}};
+    return {snap: {step: 10}, leftTop: true};
   }
+
 
   static addDragToElement(){
     const dropArea = document.querySelector('#dropArea');
     return new PlainDraggable(dropArea.lastElementChild, this.getDefaultOptions());
+  }
+
+  static addFurnitureCoords(x, y){
+    const dropArea = document.querySelector('#dropArea');
+    dropArea.lastElementChild.style.left = `${x}px`
+    dropArea.lastElementChild.style.top = `${y}px`
   }
 
   static saveRoom(roomArea){
@@ -38,9 +45,10 @@ class Room{
     for(const furniture of roomArea){
       let furnObj={
       furniture_id: furniture.dataset.id,
-      furniture_x: parseInt(furniture.getBoundingClientRect().x),
-      furniture_y: parseInt(furniture.getBoundingClientRect().y)
+      furniture_x: parseInt(furniture.style.left.slice(0,-2)),
+      furniture_y: parseInt(furniture.style.top.slice(0,-2)),
       }
+      
       roomArray.push(furnObj);
     }
 
@@ -49,13 +57,3 @@ class Room{
     return roomArray
   }
 }
-
-
-// coordTest =document.querySelectorAll('#dropArea div')[2].style.transform.split('')
-//
-// coordTest.filter(letter => Number(letter) || letter === "0" || letter === ".")
-//
-// coords.join("").split(" ")
-//
-// x = coords[0]
-// y = coords[1]
